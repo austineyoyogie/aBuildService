@@ -1,0 +1,15 @@
+build:
+	@go build -o bin/aIBuildService ./main.go
+
+test:
+	@go test -v ./...
+
+run: build
+	@./bin/aIBuildService
+
+
+clean:	@rm -rf bin/
+
+.PHONY: build test run clean
+
+# To run: make run

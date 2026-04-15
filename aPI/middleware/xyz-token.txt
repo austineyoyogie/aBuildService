@@ -1,0 +1,75 @@
+https://www.youtube.com/watch?v=HtsEaKuYY2o
+https://www.youtube.com/watch?v=ygwF2gtjv18
+https://www.youtube.com/watch?v=F3AAs5HvBR8&list=PLHJSOadaTAYvTFzJWMG7Iccwnfi3x6xVg&index=1
+
+
+golang jwt refresh token example
+
+
+package main
+
+import (
+	"fmt"
+	"time"
+	"errors"
+	"github.com/golang-jwt/jwt/v5"
+)
+
+// Secrets (Use environment variables in production)
+var (
+	accessSecret = []byte("access_secret")
+	refreshSecret = []byte("refresh_secret")
+)
+
+type CustomClaims struct {
+	UserID string `json:"user_id"`
+	jwt.RegisteredClaims
+}
+
+// GenerateAccessToken creates a short-lived token (e.g., 15 mins)
+func GenerateAccessToken(userID string) (string, error) {
+	claims := &CustomClaims{
+		UserID: userID,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(15 * time.Minute)),
+		},
+	}
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	return token.SignedString(accessSecret)
+}
+
+// GenerateRefreshToken creates a long-lived token (e.g., 7 days)
+func GenerateRefreshToken(userID string) (string, error) {
+	claims := &CustomClaims{
+		UserID: userID,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(7 * 24 * time.Hour)),
+		},
+	}
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	// In production, store refresh token in DB for revocation
+	return token.SignedString(refreshSecret)
+}
+
+// ValidateToken checks if a token is valid using the secret key
+func ValidateToken(tokenString string, secretKey []byte) (*CustomClaims, error) {
+	token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return secretKey, nil
+	})
+	if err != nil || !token.Valid {
+		return nil, errors.New("invalid token")
+	}
+	return token.Claims.(*CustomClaims), nil
+}
+
+// RefreshTokenFlow handles exchanging a refresh token for new tokens
+func RefreshTokenFlow(refreshTokenString string) (string, string, error) {
+	claims, err := ValidateToken(refreshTokenString, refreshSecret)
+	if err != nil {
+		return "", "", err
+	}
+	// Generate new pair (Token Rotation)
+	newAccess, _ := GenerateAccessToken(claims.UserID)
+	newRefresh, _ := GenerateRefreshToken(claims.UserID)
+	return newAccess, newRefresh, nil
+}

@@ -1,0 +1,26 @@
+package main
+
+import (
+	"aIBuildService/aPI/config/database"
+	"aIBuildService/aPI/models"
+	"aIBuildService/aPI/models/products"
+	"aIBuildService/aPI/server"
+	"errors"
+	"log"
+	"net/http"
+	"os"
+)
+
+var (
+	CD = database.CDriver()
+)
+
+func main() {
+	models.AutoMigration(CD)
+	products.ProductMigration(CD)
+	s := server.NewAPIServer(":8080")
+	if err := s.Start(); err != nil && errors.Is(err, http.ErrServerClosed) {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+}
