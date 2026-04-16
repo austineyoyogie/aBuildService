@@ -9,7 +9,7 @@ func RouteHandler() *http.ServeMux {
 	//TokenMaker  *middleware.JWTMaker
 	//jwtMaker = *middleware.JWTMaker
 
-	// https://www.youtube.com/watch?v=liM8bwcy4_Q => Twillo CMS
+
 
 	//mux.Handle("/v3/", http.StripPrefix("/v3", mux))
 	//mux.HandleFunc("GET /welcome", welcomeResource.WelcomeGetHandler)
