@@ -165,14 +165,7 @@ func ExtractToken(c *gin.Context) string {
 	}
 	return ""
 }
-*/
 
-// https://neon.com/guides/golang-jwt  => insert jwt into database
-// https://dev.to/neelp03/securing-your-go-api-with-jwt-authentication-4amj
-// https://www.codingexplorations.com/blog/creating-a-restful-api-with-jwt-authentication-in-go
-// https://www.youtube.com/watch?v=Xqk-5lynrCQ
-
-/*
 // Key type for context values
 type contextKey string
 
