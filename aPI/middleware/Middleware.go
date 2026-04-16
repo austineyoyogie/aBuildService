@@ -106,16 +106,7 @@ func GetAuthMiddlewareFunc(tokenMaker *JWTMaker) func(http.Handler) http.Handler
 	}
 }
 
-// get authenticated user in angular 19 example
-// Get the current login user 17,18
-// https://www.google.com/search?q=get+authenticated+user+in+angular+20&sca_esv=d0849dc9e7ce7768&ei=GkJwacOIH-Wm0PEPyIyliAg&ved=0ahUKEwjD_aPl0puSAxVlEzQIHUhGCYEQ4dUDCBE&uact=5&oq=get+authenticated+user+in+angular+20&gs_lp=Egxnd3Mtd2l6LXNlcnAiJGdldCBhdXRoZW50aWNhdGVkIHVzZXIgaW4gYW5ndWxhciAyMDIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGKABSP4qUPwLWNkgcAF4AJABAJgBYaAB_AOqAQE3uAEDyAEA-AEBmAIHoAL5A8ICCBAAGLADGO8FwgILEAAYsAMYogQYiQXCAgUQIRirAsICBRAhGJ8FmAMAiAYBkAYFkgcDNi4xoAfKJrIHAzUuMbgH8gPCBwUwLjMuNMgHF4AIAA&sclient=gws-wiz-serp
-// https://www.google.com/search?q=get+authenticated+user+in+angular+20&sca_esv=d0849dc9e7ce7768&ei=GkJwacOIH-Wm0PEPyIyliAg&ved=0ahUKEwjD_aPl0puSAxVlEzQIHUhGCYEQ4dUDCBE&uact=5&oq=get+authenticated+user+in+angular+20&gs_lp=Egxnd3Mtd2l6LXNlcnAiJGdldCBhdXRoZW50aWNhdGVkIHVzZXIgaW4gYW5ndWxhciAyMDIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGKABSP4qUPwLWNkgcAF4AJABAJgBYaAB_AOqAQE3uAEDyAEA-AEBmAIHoAL5A8ICCBAAGLADGO8FwgILEAAYsAMYogQYiQXCAgUQIRirAsICBRAhGJ8FmAMAiAYBkAYFkgcDNi4xoAfKJrIHAzUuMbgH8gPCBwUwLjMuNMgHF4AIAA&sclient=gws-wiz-serp
-// https://www.google.com/search?q=get+authenticated+user+in+angular+18&sca_esv=d0849dc9e7ce7768&ei=jj5wacWDPZWd0PEPzIvwuAM&ved=0ahUKEwjFgsa0z5uSAxWVDjQIHcwFHDcQ4dUDCBE&uact=5&oq=get+authenticated+user+in+angular+18&gs_lp=Egxnd3Mtd2l6LXNlcnAiJGdldCBhdXRoZW50aWNhdGVkIHVzZXIgaW4gYW5ndWxhciAxODIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGKABSJ0WUMYGWL8LcAF4AZABAJgBYaABtgGqAQEyuAEDyAEA-AEBmAIDoALJAcICChAAGLADGNYEGEfCAgUQIRirApgDAIgGAZAGCJIHAzIuMaAH9AqyBwMxLjG4B8EBwgcDMi0zyAcOgAgA&sclient=gws-wiz-serp
-// https://www.google.com/search?q=get+authenticated+user+in+angular+17&sca_esv=d0849dc9e7ce7768&source=hp&ei=Vz5waeD9LKeOur8Pt9Df4Qc&iflsig=AFdpzrgAAAAAaXBMZ38SZRlwZtBuHLgUAI3pYQR3sIFT&oq=get+authenticated+user+in+angu&gs_lp=Egdnd3Mtd2l6Ih5nZXQgYXV0aGVudGljYXRlZCB1c2VyIGluIGFuZ3UqAggDMgUQIRigATIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGJ8FMgUQIRifBUiCpgNQ9A9YzvgCcBB4AJABAJgBW6AB5hWqAQI0N7gBA8gBAPgBAZgCP6AC6heoAgrCAh0QABiABBi0AhjUAxjlAhjnBhi3AxiKBRjqAhiKA8ICCxAAGIAEGJECGIoFwgILEAAYgAQYsQMYgwHCAhEQLhiABBixAxjRAxiDARjHAcICEBAuGIAEGNEDGEMYxwEYigXCAgUQLhiABMICBRAAGIAEwgIOEAAYgAQYsQMYgwEYigXCAggQLhiABBixA8ICCBAAGIAEGLEDwgIOEC4YgAQYsQMYxwEYrwHCAgsQLhiABBjHARivAcICCxAuGIAEGNEDGMcBwgILEC4YgAQYsQMYigXCAgsQLhiABBixAxiDAcICDBAAGIAEGLEDGAoYC8ICCxAAGIAEGIYDGIoFwgIFEAAY7wXCAgcQABiABBgNwgIGEAAYDRgewgIKEAAYBRgKGA0YHsICChAAGAgYChgNGB7CAggQABiiBBiJBcICCBAAGIAEGKIEwgIGEAAYFhgewgIIEAAYFhgKGB7CAgcQIRigARgKwgIFECEYqwKYAwbxBc2FJlOd4IdikgcCNjOgB6nWArIHAjQ3uAerF8IHBzAuMTMuNTDIB7oBgAgA&sclient=gws-wiz
-// https://www.google.com/search?q=How+to+get+authenticated+user+in+golang+api+web+page&sca_esv=3e001843e4d244d0&biw=1792&bih=983&aic=0&ei=4QNuafa_AcTE0PEPrYmF4QY&ved=0ahUKEwi2tMGVr5eSAxVEIjQIHa1EIWwQ4dUDCBM&uact=5&oq=How+to+get+authenticated+user+in+golang+api+web+page&gs_lp=Egxnd3Mtd2l6LXNlcnAiNEhvdyB0byBnZXQgYXV0aGVudGljYXRlZCB1c2VyIGluIGdvbGFuZyBhcGkgd2ViIHBhZ2UyBRAhGKsCSP5RUIALWNFLcAF4AJABAJgBdaABngaqAQQxMC4xuAEDyAEA-AEBmAILoALTBsICBRAhGKABwgIFEAAY7wXCAggQABiABBiiBJgDAIgGAZIHBDEwLjGgB4YqsgcEMTAuMbgH0wbCBwUwLjUuNsgHIIAIAQ&sclient=gws-wiz-serp
-// https://www.google.com/search?sca_esv=3e001843e4d244d0&q=How+to+get+authenticated+user+in+golang+api+web+page+example+qui&sa=X&ved=2ahUKEwii8c7yuZeSAxWxJEQIHb01CXgQ1QJ6BAg6EAE&biw=1781&bih=930&dpr=2&aic=0
 
-/*
 func RequestAuthMiddleware(next http.Handler) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		token := r.Header.Get("Authorization")
@@ -136,4 +127,4 @@ func MiddlewareChain(middlewares ...Middleware) Middleware {
 		return next.ServeHTTP
 	}
 }
-*/
+
