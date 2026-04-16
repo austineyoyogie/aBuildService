@@ -1,5 +1,5 @@
 ===================
-https://oneuptime.com/blog/post/2026-01-07-go-jwt-authentication/view
+
 Setting Up the Project
 First, initialize your Go module and install the required dependencies:
 ===================
