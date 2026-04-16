@@ -59,15 +59,7 @@ func (maker *JWTMaker) RenewAccessToken(UUID string, email string, duration time
 	return tokenStr, claims, nil
 }
 
-/*
-// Try to use jwt 5 = golang-jwt/jwt
-// https://www.youtube.com/watch?v=HtsEaKuYY2o => Good for try
-// https://github.com/dhij/ecomm
 
-// https://dev.to/neelp03/securing-your-go-api-with-jwt-authentication-4amj
-// https://pkg.go.dev/github.com/golang-jwt/jwt/v5@v5.3.0
-// https://permify.co/post/jwt-authentication-go/
-// https://medium.com/@cheickzida/golang-implementing-jwt-token-authentication-bba9bfd84d60
 
 var (
 	ErrInvalidCredentials = errors.New("invalid credentials")
@@ -263,5 +255,4 @@ func ValidateToken(tokenString string) (jwt.MapClaims, error) {
 
 	return nil, ErrInvalidToken
 }
-// https://reliasoftware.com/blog/golang-jwt-authentication
-*/
+
