@@ -87,8 +87,7 @@ func validatePhoneNumber(phoneNumber string) ([]byte, error) {
 	return nil, nil
 }
 
-/*====== IN USE ======*/
-// https://www.youtube.com/watch?v=2ynftHoCyRU
+
 
 // not IsMatch working. try again later
 
