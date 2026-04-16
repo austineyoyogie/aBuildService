@@ -120,11 +120,3 @@ func (r *Role) Validate() error {
 	return nil
 }
 
-// OAuth Golang Tutorial for Authentication
-// https://www.youtube.com/watch?v=iHFQyd__2A0
-// https://www.youtube.com/watch?v=WvEzw7wTuzE
-
-// https://www.twilio.com/en-us/blog/developers/community/multi-factor-authentication-go-twilio-verify
-// https://codevoweb.com/two-factor-authentication-2fa-in-golang/
-// Rename the method struct
-// https://abrialstha.medium.com/going-with-go-authentication-route-protection-02c52fc11382
