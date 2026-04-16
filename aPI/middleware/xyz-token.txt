@@ -1,6 +1,4 @@
-https://www.youtube.com/watch?v=HtsEaKuYY2o
-https://www.youtube.com/watch?v=ygwF2gtjv18
-https://www.youtube.com/watch?v=F3AAs5HvBR8&list=PLHJSOadaTAYvTFzJWMG7Iccwnfi3x6xVg&index=1
+
 
 
 golang jwt refresh token example
